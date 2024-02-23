@@ -1,0 +1,20 @@
+.hero {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    text-align: center;
+    background-image: url("https://cdn.pixabay.com/photo/2016/10/29/07/48/structure-1779979_1280.jpg"); 
+    background-size: cover; 
+    background-position: center;   }
+
+
+    .section {
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        text-align: center;
+        background-position: center;   }

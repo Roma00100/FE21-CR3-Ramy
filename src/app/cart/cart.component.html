@@ -1,0 +1,45 @@
+<h3>Cart Items</h3>
+<div class="row">
+  <div class="col-md-8">
+    <div *ngFor="let val of cart" class="m-2 product-item">
+      <img [src]="val.img" alt="" width="100" />
+      <p>Product Name: {{ val.name }}</p>
+      <p>Price: {{ val.price }}</p>
+      <p *ngIf="val.quantity">Quantity: {{ val.quantity }}</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h4>Summary</h4>
+    <div>
+      <p>Total: {{ total.toFixed(2) }} &euro;</p>
+
+      <div *ngIf="total >= 0">
+        <p>Service: {{ (total * 0.1).toFixed(2) }} &euro;</p>
+      </div>
+
+      <div *ngIf="total > 40; else noDiscount">
+        <p>
+          The Total before the discount 15% :
+          {{ (total + total * 0.1).toFixed(2) }} &euro;
+        </p>
+        <p>Discount: {{ ((total + total * 0.1) * 0.15).toFixed(2) }} &euro;</p>
+
+        <p>
+          Total Amount after Discount:
+          {{ (total + total * 0.1 - (total + total * 0.1) * 0.1).toFixed(2) }}
+          &euro;
+        </p>
+      </div>
+      <ng-template #noDiscount>
+        <p>Discount : 0.00 &euro;</p>
+      </ng-template>
+
+      <p>
+        <strong>Total amount including VAT: </strong>
+        {{ (total + total * 0.1 - (total + total * 0.1) * 0.1).toFixed(2) }}
+        &euro;
+      </p>
+    </div>
+  </div>
+</div>

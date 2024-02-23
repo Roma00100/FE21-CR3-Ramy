@@ -1,0 +1,42 @@
+<div class="product-list-container">
+  <div class="row">
+    <div
+      *ngFor="let product of products; let i = index"
+      class="col-xl-3 col-lg-3 col-md-2 col-sm-1 my-3 mx-3 my-3"
+    >
+      <div class="card">
+        <img
+          [src]="product.img"
+          class="card-img-top img-fluid"
+          style="height: 300px"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">
+            <span style="color: rgb(56, 201, 27)">
+              {{ product.price | currency : "EUR" : "symbol" : "1.2-2" }}
+            </span>
+          </p>
+
+          <p *ngIf="!product.available" class="text-danger">Not Available</p>
+
+          <a
+            [routerLink]="['/products', i]"
+            *ngIf="product.available"
+            class="btn btn-primary mr-2"
+          >
+            Details
+          </a>
+
+          <button
+            *ngIf="product.available"
+            class="btn btn-success"
+            (click)="addToCart(product)"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
